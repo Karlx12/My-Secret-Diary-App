@@ -1,13 +1,13 @@
-class Page {
+class PageDiary {
   final int? id;
   final int pageNumber;
   final String content;
   final String? title;
 
-  Page({this.id, required this.pageNumber, required this.content, this.title});
+  PageDiary({this.id, required this.pageNumber, required this.content, this.title});
 
-  factory Page.fromJson(Map<String, dynamic> json) {
-    return Page(
+  factory PageDiary.fromJson(Map<String, dynamic> json) {
+    return PageDiary(
       id: json['id'],
       pageNumber: json['pageNumber'],
       content: json['content'],
@@ -26,6 +26,6 @@ class Page {
 
   @override
   String toString() {
-    return 'Page{id: $id, pageNumber: $pageNumber, content: $content, title: $title}';
+    return 'PageDiary{id: $id, pageNumber: $pageNumber, content: $content, title: $title}';
   }
 }
