@@ -1,24 +1,40 @@
 import 'package:flutter/material.dart';
-import 'package:mysecretdiary/models/page_diary.dart';
-import 'package:mysecretdiary/views/widgets/page_viewer.dart';
+import 'package:turn_page_transition/turn_page_transition.dart';
+import 'package:mysecretdiary/view/widget/diary_page_input.dart';
 
+class DiaryPagesView extends StatefulWidget {
+  const DiaryPagesView({super.key});
 
-class DiaryHomePage extends StatelessWidget {
-  const DiaryHomePage({super.key});
+  @override
+  DiaryPagesState createState() => DiaryPagesState();
+}
+
+class DiaryPagesState extends State<DiaryPagesView> {
+  final List<TextEditingController> _controllers = List.generate(
+    5, // Number of pages
+        (index) => TextEditingController(),
+  );
 
   @override
   Widget build(BuildContext context) {
-    final PageDiary samplePage = PageDiary(
-      pageNumber: 1,
-      content: '# My First Page\nThis is a sample content with **Markdown**.',
-      title: 'My First Page',
-    );
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('My Secret Diary'),
       ),
-      body: PageViewer(page: samplePage),
+      body: TurnPageView.builder(
+        itemCount: _controllers.length,
+        itemBuilder: (context, index) {
+          return DiaryPageInput(controller: _controllers[index]);
+        },
+      ),
     );
+  }
+
+  @override
+  void dispose() {
+    for (var controller in _controllers) {
+      controller.dispose();
+    }
+    super.dispose();
   }
 }
