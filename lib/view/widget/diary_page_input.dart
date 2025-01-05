@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class DiaryPageInput extends StatelessWidget {
   final TextEditingController controller;
 
-  const DiaryPageInput({Key? key, required this.controller}) : super(key: key);
+  const DiaryPageInput({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {

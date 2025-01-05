@@ -5,7 +5,7 @@ import '../../models/page_diary.dart';
 class PageViewer extends StatelessWidget {
   final PageDiary page;
 
-  const PageViewer({Key? key, required this.page}) : super(key: key);
+  const PageViewer({super.key, required this.page});
 
   @override
   Widget build(BuildContext context) {
